@@ -1,0 +1,31 @@
+{
+  "name": "smartoffice",
+  "version": "1.0.0",
+  "description": "Control a smart light based on Google Calendar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint -f table --ext **/*.js",
+    "lint-fix": "eslint -f table --ext **/*.js --fix",
+    "authorize": "node src/authorize.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drtechie/smartoffice.git"
+  },
+  "author": "drtechie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drtechie/smartoffice/issues"
+  },
+  "homepage": "https://github.com/drtechie/smartoffice#readme",
+  "dependencies": {
+    "googleapis": "^89.0.0",
+    "tuyapi": "codetheweb/tuyapi"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2"
+  }
+}
