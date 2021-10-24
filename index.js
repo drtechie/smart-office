@@ -4,10 +4,10 @@ const device = require('./src/device');
 (async () => {
   try {
     const status = await calendar.listEvents
-    console.log('Current status: ', status);
+    console.log(`[${ (new Date()).toISOString() }] Current status: `, status);
     await device.changeColour(status)
   } catch (error) {
-    console.error('there was an error');
+    console.log(`[${ (new Date()).toISOString() }] Error: `, error.message);
     await device.changeColour('UNKNOWN')
   }
 })();

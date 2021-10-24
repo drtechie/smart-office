@@ -49,7 +49,7 @@ A NodeJS script that can be run periodically to check your calendar and change t
    }
    ```
 4. Execute `node index.js` to change the colour of the bulb.
-5. Configure a cron job to run the script every 2 minutes.
+5. Configure a cron job to run the script every 2 minutes (check attached launchd plist).
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
