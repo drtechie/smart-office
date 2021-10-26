@@ -10,6 +10,11 @@ const DND_EVENT_NAMES = [
   'Do not disturb'
 ];
 
+const BUSY_EVENT_STATUSES = [
+  'needsAction',
+  'accepted'
+];
+
 const TOKEN_PATH = '../config/token.json';
 const CREDENTIALS_PATH = '../config/client_secret.json';
 
@@ -43,7 +48,19 @@ const listEvents = new Promise((resolve, reject) => {
       if (events.length) {
         const eventNames = events.map((event) => event.summary);
         const isDnd = eventNames.some((eventName) => DND_EVENT_NAMES.includes(eventName));
-        status = isDnd ? 'DND' : 'BUSY';
+        const isAttending = events.some((event) => {
+          const { attendees } = event;
+          if (!attendees) {
+            return true;
+          }
+          const self = attendees.find(attendee => attendee.self === true);
+          return BUSY_EVENT_STATUSES.includes(self.responseStatus);
+        });
+        if (isDnd) {
+          status = 'DND';
+        } else if (isAttending) {
+          status = 'BUSY';
+        }
       }
       resolve(status);
     });
