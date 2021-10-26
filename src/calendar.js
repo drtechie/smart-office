@@ -7,12 +7,12 @@ const DND_EVENT_NAMES = [
   'Do Not Disturb',
   'Block',
   'block',
-  'Do not disturb'
+  'Do not disturb',
 ];
 
 const BUSY_EVENT_STATUSES = [
   'needsAction',
-  'accepted'
+  'accepted',
 ];
 
 const TOKEN_PATH = '../config/token.json';
@@ -53,7 +53,7 @@ const listEvents = new Promise((resolve, reject) => {
           if (!attendees) {
             return true;
           }
-          const self = attendees.find(attendee => attendee.self === true);
+          const self = attendees.find((attendee) => attendee.self === true);
           return BUSY_EVENT_STATUSES.includes(self.responseStatus);
         });
         if (isDnd) {
